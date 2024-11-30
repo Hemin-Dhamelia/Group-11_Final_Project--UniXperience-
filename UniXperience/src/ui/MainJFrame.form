@@ -23,123 +23,98 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainJFrameJSplitPane" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="LoginJPanel" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainJFrameJSplitPane" alignment="0" max="32767" attributes="0"/>
+          <Component id="LoginJPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JSplitPane" name="MainJFrameJSplitPane">
+    <Container class="javax.swing.JPanel" name="LoginJPanel">
       <Properties>
-        <Property name="dividerLocation" type="int" value="175"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[860, 600]"/>
+        </Property>
       </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
-      <SubComponents>
-        <Container class="javax.swing.JPanel" name="LoginJPanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
-              <JSplitPaneConstraints position="left"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LoginBtn" min="-2" pref="78" max="-2" attributes="0"/>
-                          <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPassword" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLogin" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtUsername" linkSize="1" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="375" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblLogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="txtUsername" linkSize="2" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="LoginBtn" min="-2" pref="78" max="-2" attributes="0"/>
                       <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPassword" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="LoginBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="260" max="32767" attributes="0"/>
+                      <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPassword" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtUsername" linkSize="1" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace pref="375" max="32767" attributes="0"/>
               </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="LoginBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Login"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtnActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblLogin">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Helvetica Neue" size="30" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Login"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPassword">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtUsername">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblUsername">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Username :"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPassword">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Password :"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
-              <JSplitPaneConstraints position="right"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="667" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="lblLogin" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUsername" linkSize="2" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassword" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="LoginBtn" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="235" max="32767" attributes="0"/>
               </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="LoginBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Login"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblLogin">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="30" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Login"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPassword">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtUsername">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblUsername">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Username :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPassword">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Password :"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

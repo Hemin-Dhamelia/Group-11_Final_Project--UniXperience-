@@ -26,11 +26,11 @@ public class ScheduleAppointments extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         lblSelectDate = new javax.swing.JLabel();
         btnScheduleAppointment = new javax.swing.JButton();
         lblHelloStudent = new javax.swing.JLabel();
         lblScheduleYourAppointment = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         lblSelectDate.setText("Select Date :");
 
@@ -47,44 +47,42 @@ public class ScheduleAppointments extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnScheduleAppointment)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(203, Short.MAX_VALUE)
+                        .addComponent(lblSelectDate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(203, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(200, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnScheduleAppointment)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblSelectDate)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblHelloStudent))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblScheduleYourAppointment)))
-                .addContainerGap(254, Short.MAX_VALUE))
+                    .addComponent(lblHelloStudent)
+                    .addComponent(lblScheduleYourAppointment))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addComponent(lblHelloStudent)
                 .addGap(18, 18, 18)
                 .addComponent(lblScheduleYourAppointment)
-                .addGap(116, 116, 116)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSelectDate)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnScheduleAppointment)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnScheduleAppointment;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel lblHelloStudent;
     private javax.swing.JLabel lblScheduleYourAppointment;
     private javax.swing.JLabel lblSelectDate;

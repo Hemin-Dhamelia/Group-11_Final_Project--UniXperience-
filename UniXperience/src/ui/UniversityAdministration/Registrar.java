@@ -4,16 +4,20 @@
  */
 package ui.UniversityAdministration;
 
+import model.User;
+
 /**
  *
  * @author RIYA
  */
 public class Registrar extends javax.swing.JPanel {
 
+    private User user;
     /**
      * Creates new form Registrar
      */
-    public Registrar() {
+    public Registrar(User user) {
+        this.user = user; // Store the user object
         initComponents();
     }
 

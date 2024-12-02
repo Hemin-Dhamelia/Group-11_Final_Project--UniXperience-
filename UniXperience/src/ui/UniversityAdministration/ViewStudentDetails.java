@@ -4,6 +4,13 @@
  */
 package ui.UniversityAdministration;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author RIYA
@@ -106,15 +113,85 @@ public class ViewStudentDetails extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        int selectedRow = StudentCatalog.getSelectedRow();
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a row to update!");
+        return;
+    }
+
+    String firstName = (String) StudentCatalog.getValueAt(selectedRow, 0);
+    String lastName = (String) StudentCatalog.getValueAt(selectedRow, 1);
+    String emailId = (String) StudentCatalog.getValueAt(selectedRow, 2);
+    String contactNo = (String) StudentCatalog.getValueAt(selectedRow, 3);
+
+    try (Connection conn = DatabaseConnection.DBConnection.getConnection()) {
+        String query = "UPDATE Students SET first_name = ?, last_name = ?, contact_no = ? WHERE email_id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setString(1, firstName);
+        pstmt.setString(2, lastName);
+        pstmt.setString(3, contactNo);
+        pstmt.setString(4, emailId);
+
+        pstmt.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Record updated successfully!");
+        loadStudentData();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int selectedRow = StudentCatalog.getSelectedRow();
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a row to delete!");
+        return;
+    }
+
+    String emailId = (String) StudentCatalog.getValueAt(selectedRow, 2);
+
+    try (Connection conn = DatabaseConnection.DBConnection.getConnection()) {
+        String query = "DELETE FROM Students WHERE email_id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setString(1, emailId);
+
+        pstmt.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Record deleted successfully!");
+        loadStudentData();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnButtonActionPerformed
+
+    private void loadStudentData() {
+    try (Connection conn = DatabaseConnection.DBConnection.getConnection()) {
+        // Query to fetch all student records
+        String query = "SELECT first_name, last_name, email_id, contact_no FROM Students";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        ResultSet rs = pstmt.executeQuery();
+
+        // Get the table model to update rows
+        DefaultTableModel model = (DefaultTableModel) StudentCatalog.getModel();
+        model.setRowCount(0); // Clear existing rows
+
+        // Loop through the result set and add rows to the table
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getString("first_name"),
+                rs.getString("last_name"),
+                rs.getString("email_id"),
+                rs.getString("contact_no")
+            });
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Failed to load student data!");
+    }
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -67,6 +67,7 @@ public class ViewFaculty extends javax.swing.JPanel {
             }
         });
 
+        btnButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnButton.setText("<<Back");
         btnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -43,11 +43,13 @@ public class DepartmentHead extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         lblQualification = new javax.swing.JLabel();
 
-        lblTitle2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTitle2.setFont(new java.awt.Font("Helvetica Neue", 1, 30)); // NOI18N
         lblTitle2.setText("Faculty Details:");
 
+        lblEmailID.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblEmailID.setText("Email ID:");
 
+        lblFirstName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblFirstName.setText("First Name:");
 
         txtEmailID.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +64,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
+        btnView.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnView.setText("View Faculty");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +72,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
+        lblLastName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblLastName.setText("Last Name:");
 
         txtLastName.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +81,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
+        lblAge.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblAge.setText("Age:");
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +90,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
+        lblContactNo.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblContactNo.setText("Contact No:");
 
         txtContactNo.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +99,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         lblTitle.setText("Department Head");
 
         txtQualification.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +108,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +116,7 @@ public class DepartmentHead extends javax.swing.JPanel {
             }
         });
 
+        lblQualification.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblQualification.setText("Qualification:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -116,13 +124,10 @@ public class DepartmentHead extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(382, 382, 382)
-                        .addComponent(lblTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(2, 2, 2)
@@ -135,12 +140,12 @@ public class DepartmentHead extends javax.swing.JPanel {
                                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblTitle2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
+                                .addGap(130, 130, 130)
+                                .addComponent(btnView))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblAge)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnView)
-                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -155,8 +160,9 @@ public class DepartmentHead extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtQualification, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnSave))))
-                .addContainerGap(215, Short.MAX_VALUE))
+                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(lblTitle))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAge, txtLastName});
@@ -164,9 +170,9 @@ public class DepartmentHead extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(lblTitle)
-                .addGap(62, 62, 62)
+                .addGap(18, 18, 18)
                 .addComponent(lblTitle2)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -196,7 +202,7 @@ public class DepartmentHead extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnView)
                     .addComponent(btnSave))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -4,12 +4,28 @@
  */
 package ui;
 
+import DatabaseConnection.DBConnection;
+import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import model.User;
+import ui.UniversityAdministration.ManageAdmissionsOffice;
+import ui.UniversityAdministration.Registrar;
+
 /**
  *
  * @author HP
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+//    private JTextField txtUsername;
+//    private JPasswordField txtPassword;
     /**
      * Creates new form MainJFrame
      */
@@ -29,10 +45,10 @@ public class MainJFrame extends javax.swing.JFrame {
         LoginJPanel = new javax.swing.JPanel();
         LoginBtn = new javax.swing.JButton();
         lblLogin = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,20 +78,17 @@ public class MainJFrame extends javax.swing.JFrame {
         LoginJPanel.setLayout(LoginJPanelLayout);
         LoginJPanelLayout.setHorizontalGroup(
             LoginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginJPanelLayout.createSequentialGroup()
-                .addContainerGap(375, Short.MAX_VALUE)
-                .addGroup(LoginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginJPanelLayout.createSequentialGroup()
+                .addContainerGap(381, Short.MAX_VALUE)
+                .addGroup(LoginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblLogin)
                     .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPassword)
                     .addComponent(lblUsername)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(375, Short.MAX_VALUE))
+                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(txtPassword))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
-
-        LoginJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtPassword, txtUsername});
-
         LoginJPanelLayout.setVerticalGroup(
             LoginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginJPanelLayout.createSequentialGroup()
@@ -87,28 +100,14 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
                 .addComponent(LoginBtn)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
-        LoginJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtPassword, txtUsername});
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LoginJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LoginJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(LoginJPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,8 +118,63 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
+        String username = txtUsername.getText().trim();
+        String password = new String(txtPassword.getPassword()).trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter both username and password!");
+            return;
+        }
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String query = "SELECT role FROM Users WHERE username = ? AND password = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String role = rs.getString("role");
+                User user = new User(username, password, role);
+
+                if (role.equalsIgnoreCase("Registrar")) {
+                    showRegistrarPanel(user);
+                } else if (role.equalsIgnoreCase("AdmissionsOfficer")) {
+                    showAdmissionsOfficePanel(user);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid role!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or Password!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error connecting to the database.");
+        }
     }//GEN-LAST:event_LoginBtnActionPerformed
 
+    private void showRegistrarPanel(User user) {
+        Registrar registrarPanel = new Registrar(user);
+        switchPanel(registrarPanel);
+        //registrarPanel.setVisible(true);
+        //this.dispose();
+    }
+
+    private void showAdmissionsOfficePanel(User user) {
+        ManageAdmissionsOffice admissionsOfficePanel = new ManageAdmissionsOffice(user);
+        switchPanel(admissionsOfficePanel);
+    }
+
+    private void switchPanel(javax.swing.JPanel panel) {
+    getContentPane().removeAll(); // Remove existing content
+    getContentPane().add(panel);  // Add the new panel
+    revalidate();                 // Refresh the layout
+    repaint();                    // Redraw the frame
+    System.out.println("Panel switched to: " + panel.getClass().getName()); // Debug info
+}
+
+    
     /**
      * @param args the command line arguments
      */
@@ -162,7 +216,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+   
+
 }

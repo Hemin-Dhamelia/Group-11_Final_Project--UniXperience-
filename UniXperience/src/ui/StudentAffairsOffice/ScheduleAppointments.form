@@ -24,8 +24,7 @@
                           <Component id="btnScheduleAppointment" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="lblSelectDate" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -50,11 +49,8 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblScheduleYourAppointment" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblSelectDate" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblSelectDate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="btnScheduleAppointment" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="233" max="32767" attributes="0"/>
           </Group>
@@ -62,8 +58,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblSelectDate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Select Date :"/>

@@ -26,7 +26,6 @@ public class ScheduleAppointments extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         lblSelectDate = new javax.swing.JLabel();
         btnScheduleAppointment = new javax.swing.JButton();
         lblHelloStudent = new javax.swing.JLabel();
@@ -54,8 +53,7 @@ public class ScheduleAppointments extends javax.swing.JPanel {
                             .addComponent(btnScheduleAppointment)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblSelectDate)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(55, 55, 55))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblHelloStudent))
@@ -72,10 +70,8 @@ public class ScheduleAppointments extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(lblScheduleYourAppointment)
                 .addGap(116, 116, 116)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSelectDate)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSelectDate)
+                .addGap(8, 8, 8)
                 .addComponent(btnScheduleAppointment)
                 .addContainerGap(233, Short.MAX_VALUE))
         );
@@ -84,7 +80,6 @@ public class ScheduleAppointments extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnScheduleAppointment;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel lblHelloStudent;
     private javax.swing.JLabel lblScheduleYourAppointment;
     private javax.swing.JLabel lblSelectDate;

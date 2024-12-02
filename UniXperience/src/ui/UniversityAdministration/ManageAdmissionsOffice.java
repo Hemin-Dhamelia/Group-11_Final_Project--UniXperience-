@@ -4,17 +4,28 @@
  */
 package ui.UniversityAdministration;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import model.User;
+
 /**
  *
  * @author RIYA
  */
 public class ManageAdmissionsOffice extends javax.swing.JPanel {
 
+    private User user;
     /**
      * Creates new form AdmissionsOffice
      */
-    public ManageAdmissionsOffice() {
+    public ManageAdmissionsOffice(User user) {
+        this.user = user; // Store the user object
         initComponents();
+        
     }
 
     /**
@@ -271,10 +282,34 @@ public class ManageAdmissionsOffice extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        this.removeAll();
+        this.add(new ViewStudentDetails());
+        this.revalidate();
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+
+        String firstName = txtFirstName.getText();
+    String lastName = txtLastName.getText();
+    int age = Integer.parseInt(txtAge.getText());
+    String contactNo = txtContactNo.getText();
+    String emailId = txtEmailID.getText();
+
+    try (Connection conn = DatabaseConnection.DBConnection.getConnection()) {
+        String query = "INSERT INTO Students (first_name, last_name, age, contact_no, email_id) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setString(1, firstName);
+        pstmt.setString(2, lastName);
+        pstmt.setInt(3, age);
+        pstmt.setString(4, contactNo);
+        pstmt.setString(5, emailId);
+
+        pstmt.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Student record saved successfully!");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnAttachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachActionPerformed
